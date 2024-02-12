@@ -25,7 +25,7 @@ function login(formData) {
 
 function getUserData(id) {
     $.ajax({
-        url: dataUser_route + '/' + id,
+        url: dataUser_route + id,
         method: 'GET',
         contentType: 'application/json',
         success: function(response) {

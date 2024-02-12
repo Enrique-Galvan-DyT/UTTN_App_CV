@@ -1,0 +1,83 @@
+<div class="config-data">
+    <ul class="p-0 text-dark d-flex flex-column gap-5">
+        <li class="w-100">
+            <details>
+                <summary class="d-flex align-self-center">
+                    <i class="bi bi-plus-circle-dotted me-2 fs-5 text-success"></i>
+                    <h3>Add new <span class="text-primary fw-bold">J</span>ob</h3>
+                </summary>
+                <div class="w-100 bg-light p-2 border rounded">
+                    <div class="w-100 text-dark mb-3">
+                        Formulario
+                    </div>
+                    <ul></ul>
+                </div>
+            </details>
+        </li>
+        <li class="w-100">
+            <details>
+                <summary class="d-flex align-self-center">
+                    <i class="bi bi-plus-circle-dotted me-2 fs-5 text-success"></i>
+                    <h3>Add new <span class="text-primary fw-bold">E</span>ducation</h3>
+                </summary>
+                <div class="w-100 bg-light p-2 border rounded">
+                    <div class="w-100 text-dark mb-3">
+                        Formulario
+                    </div>
+                    <ul></ul>
+                </div>
+            </details>
+        </li>
+        <li class="w-100">
+            <details>
+                <summary class="d-flex align-self-center show-user-skills">
+                    <i class="bi bi-plus-circle-dotted me-2 fs-5 text-success"></i>
+                    <h3>Add new <span class="text-primary fw-bold">S</span>kill</h3>
+                </summary>
+                <div class="w-100 bg-light p-2 border rounded">
+                    <div class="w-100 text-dark mb-3">
+                        <label for="skill" class="form-label">Skill:</label>
+                        <div class="input-group input-group-sm mb-3">
+                            <input class="form-control" placeholder="Write a skill..." id="skill" name="skill" type="text">
+                            <button class="btn btn-outline-success send-skill" type="button">Add</button>
+                        </div>
+                    </div>
+                    <ul class="user-skills-list"></ul>
+                </div>
+            </details>
+        </li>
+        <li class="w-100">
+            <details>
+                <summary class="d-flex align-self-center">
+                    <i class="bi bi-plus-circle-dotted me-2 fs-5 text-success"></i>
+                    <h3>Add new <span class="text-primary fw-bold">S</span>ocial</h3>
+                </summary>
+                <div class="w-100 bg-light p-2 border rounded">
+                    <div class="w-100 text-dark mb-3">
+                        Formulario
+                    </div>
+                    <ul></ul>
+                </div>
+            </details>
+        </li>
+    </ul>
+</div>
+
+<script>
+    document.querySelector(".show-user-skills").addEventListener('click', function(){
+        getAllUserSkills(getLocalStorageValue("id_user"))
+    })
+
+    document.querySelector('.send-skill').addEventListener('click', function () {
+        // Capturar los valores del formulario
+        var skill = $('#skill').val();
+
+        // Construir el objeto con los datos del formulario
+        var formData = {
+            Name: skill,
+            Id_User: parseInt(getLocalStorageValue("id_user"))
+        };
+
+        postSkill(formData);
+    })
+</script>

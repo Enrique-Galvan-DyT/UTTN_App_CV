@@ -81,6 +81,11 @@
         showNavMenu(document.querySelector('.navmenu-list'), body)    
     })
 
+    document.querySelector('.btn-config').addEventListener('click', function () {
+        loadPartialView('user/config', appRender);
+        showNavMenu(document.querySelector('.navmenu-list'), body)    
+    })
+
     document.querySelector('.btn-signout').addEventListener('click', function () {
         removeLocalStorageValue("id_user");
         loadPartialView('user/login', appRender);

@@ -39,6 +39,9 @@ function loadPartialView(viewName, divClass = null, isAppend = false, item = nul
                 }
                 if (functionName=="getUserData") {
                     setUserData(item)
+                }
+                if(functionName=="getAllUserSkills"){
+                    setSkillData(item, divClass.lastChild)
                 }    
             }
             return true;
