@@ -1,0 +1,141 @@
+@import url('bootstrap/dist/css/bootstrap.min.css');
+@import url('bootstrap-icons/font/bootstrap-icons.css');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/*Pantallas movil*/
+.app{
+    width: 100vw;
+    height: 100vh;
+    padding: 1rem;
+}
+
+.init{
+    i{
+        font-size: xxx-large;
+    }
+    div:nth-child(1){
+        div{
+            div:last-child{
+                text-shadow: 0px 0px 4px seagreen;
+            }
+        }
+    }
+}
+
+ul{
+    list-style: none;
+}
+
+.profile-data{
+    div:first-child{
+        height: 6rem;
+    }
+    div:nth-child(2){
+        top: -3rem;
+    }
+    .user-profile-picture{
+        height: 7rem;
+        width: 7rem;
+    }
+}
+.jobs-data{
+    ul{
+        list-style: decimal;
+        li{
+            transition: transform .2s ease, border .2s ease, box-shadow .2s ease-in;
+            border-width: 2px;
+            border-color: lightsteelblue;
+            border-style: solid;
+            box-shadow: 0rem 0rem transparent;
+
+            &:hover{
+                transform: scale(1.05);
+                border-color: cornflowerblue;
+                box-shadow: 0.25rem 0.45rem lightgrey;
+            }
+        }
+        div{
+            div:last-child{
+                div:first-child{
+                    font-size: small;
+                    font-weight: 300;
+                }
+            }
+        }
+    }
+}
+
+.nav-init {
+    overflow-x: clip;
+    div.bg-uttn-gr{
+        height: 10vh;
+    }
+    .uttn-logo{
+        width: 6rem;
+        height: auto;
+        filter: drop-shadow(1px 1px 0px gray);
+    }
+    .nav-user-profile{
+        width: 2rem;
+        height: 2rem;
+        object-fit: contain;
+        transition: transform .4s ease;
+        transform: scale(1);
+        &:hover{
+            transform: scale(1.1);
+        }
+    }
+    .navmenu-list{
+        transition: left 1s ease-in-out;
+        height: 100vh;
+        left: 100%;
+        overflow-y: auto;
+        z-index: 10;
+        li{
+            transition: background-color .2s linear;
+            background-color: transparent;
+            color: mediumseagreen;
+            padding: .5rem 1rem;
+            &:not(:first-child, :last-child):hover{
+                color: whitesmoke;
+                background-color: mediumseagreen;
+            }
+        }
+    }
+}
+
+.users-index{
+    .user-list{
+        img{
+            width: 3rem;
+            height: 3rem;
+        }
+    }
+}
+
+/*bg colors*/
+.bg-uttn{
+    background-color: #00d084;
+}
+.bg-uttn-light{
+    background-color: #7bdcb5;
+}
+.bg-uttn-gr{
+    background: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);
+}
+
+/*Pantallas tablet*/
+@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
+    .app {
+        background-position:left center;
+        /*padding:75px 0px 75px 170px; padding-top + padding-bottom + text area = image height */
+        /* margin:-90px 0px 0px -198px; offset vertical: half of image height */
+        /* offset horizontal: half of image width and text area width */
+        margin: auto !important;
+        padding: 1rem;   
+    }
+}
