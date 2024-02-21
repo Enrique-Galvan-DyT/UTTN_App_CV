@@ -43,6 +43,9 @@ function loadPartialView(viewName, divClass = null, isAppend = false, item = nul
                 if(functionName=="getAllUserSkills"){
                     setSkillData(item, divClass.lastChild)
                 }    
+                if(functionName=="getAllUserJobs"){
+                    setJobData(item, divClass.lastChild)
+                }    
             }
             return true;
             //When all modules load, remove all placeholders
@@ -150,8 +153,9 @@ setInterval(() => {
 
 setInterval(() => {
     getTotalUsers()
-}, 1000);
-
+}, 10000);
+/*
+*/
 function onDeviceReady() {
     // Cordova is now initialized. Have fun!
     console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);

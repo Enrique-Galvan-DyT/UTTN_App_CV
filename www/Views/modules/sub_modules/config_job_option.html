@@ -1,0 +1,53 @@
+<li class="job-item d-flex align-items-center justify-content-between border border-3 p-2">
+    <div class="d-flex justify-content-between pe-2 w-100">
+        <div class="m-0 d-flex flex-column gap-3">
+            <div class="d-flex flex-column gap-3">
+                <span class="job-name">Texto</span>
+                <input type="text" class="job-name-edit form-control" placeholder="Nuevo nombre">
+            </div>
+            
+            <div class="d-flex flex-column gap-3">
+                <span class="job-description">Descripción</span>
+                <textarea id="" class="job-description-edit form-control" cols="60" rows="3" placeholder="Nueva descripción"></textarea>
+            </div>
+            
+            <div class="d-flex flex-column gap-3">
+                <span class="job-position">Posición</span>
+                <input type="text" class="job-position-edit form-control" placeholder="Nueva posición">
+            </div>
+            
+            <div class="d-flex flex-column gap-3">
+                <span class="job-mode">Modo</span>
+                <input type="text" class="job-mode-edit form-control" placeholder="Nuevo modo">
+            </div>
+            
+            <div class="d-flex flex-column gap-3">
+                <span class="job-location">Ubicación</span>
+                <input type="text" class="job-location-edit form-control" placeholder="Nueva ubicación">
+            </div>
+
+            <div class="d-flex flex-column gap-3">
+                <span class="job-startdate">Fecha inicial</span>
+                <input type="date" class="job-startdate-edit form-control" placeholder="Nueva fecha inicial">
+            </div>
+            
+            <div class="d-flex flex-column gap-3">
+                <span class="job-enddate">Fecha final</span>
+                <input type="date" class="job-enddate-edit form-control" placeholder="Nueva fecha final">
+            </div>
+        </div>
+        <div class="form-check form-switch">
+            <label class="form-check-label">Status</label>
+            <input class="form-check-input job-status" type="checkbox" role="switch">
+        </div>
+    </div>
+
+    <div class="d-flex flex-column gap-2">
+        <button type="button" class="btn btn-sm btn-outline-danger btn-job-delete">
+            <i class="bi bi-trash3-fill"></i>
+        </button>
+        <button type="button" class="btn btn-sm btn-outline-primary btn-job-edit">
+            <i class="bi bi-pencil-square"></i>
+        </button>
+    </div>
+</li>

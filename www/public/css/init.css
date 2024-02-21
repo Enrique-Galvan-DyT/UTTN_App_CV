@@ -68,7 +68,18 @@ ul{
         }
     }
 }
-
+.config-data{
+    ul:where(.user-skills-list, .user-jobs-list){
+        li:hover{
+            input.form-control, textarea.form-control, .btn-outline-primary{
+                display: block;
+            }    
+        }
+        input.form-control, textarea.form-control, .btn-outline-primary{
+            display: none;
+        }
+    }
+}
 .nav-init {
     overflow-x: clip;
     div.bg-uttn-gr{
@@ -139,3 +150,8 @@ ul{
         padding: 1rem;   
     }
 }
+
+
+
+
+

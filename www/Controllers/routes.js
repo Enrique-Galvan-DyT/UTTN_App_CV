@@ -15,3 +15,11 @@ const totalUser_route = env + "Users/GetTotalUsers"
 //Skills API
 const allUserSkills_route = env + "Skills/getUserSkills/"
 const postSkill_route = env + "Skills"
+const editSkill_route = env + "Skills/"
+const deleteSkill_route = env + "Skills/"
+
+//Jobs API
+const allUserJobs_route = env + "Jobs/getUserJobs/"
+const postJob_route = env + "Jobs"
+const editJob_route = env + "Jobs/"
+const deleteJob_route = env + "Jobs/"

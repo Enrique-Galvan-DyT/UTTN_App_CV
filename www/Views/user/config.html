@@ -2,15 +2,29 @@
     <ul class="p-0 text-dark d-flex flex-column gap-5">
         <li class="w-100">
             <details>
-                <summary class="d-flex align-self-center">
+                <summary class="d-flex align-self-center show-user-jobs">
                     <i class="bi bi-plus-circle-dotted me-2 fs-5 text-success"></i>
                     <h3>Add new <span class="text-primary fw-bold">J</span>ob</h3>
                 </summary>
                 <div class="w-100 bg-light p-2 border rounded">
                     <div class="w-100 text-dark mb-3">
-                        Formulario
+                        <label for="job" class="form-label fw-medium px-1">Job:</label>
+                            <div class="d-flex flex-column gap-4">
+                                <input class="form-control" placeholder="Job's name..." id="job" name="job" type="text">
+                                <input class="form-control" placeholder="Position..." id="jobposition" name="jobposition" type="text" />
+                                <input class="form-control" placeholder="dd/mm/yyyy..." id="jobstartdate" name="jobstartdate" type="date" />
+                                <input class="form-control" placeholder="dd/mm/yyyy..." id="jobenddate" name="jobenddate" type="date" />
+                                <input class="form-control" placeholder="Location..." id="joblocation" name="joblocation" type="text" />
+                                <input class="form-control" placeholder="Mode..." id="jobmode" name="jobmode" type="text" />
+                                <textarea class="form-control" placeholder="Description..." id="jobdescription" name="jobdescription" cols="60" rows="3"></textarea>
+                                <button class="btn btn-outline-success btn-block send-job" type="button">Add</button>
+                            </div>
                     </div>
-                    <ul></ul>
+                    <h4 class="text-center">List</h4>
+                    <hr>
+                    <ul class="user-jobs-list d-flex flex-column gap-4 p-2">
+
+                    </ul>
                 </div>
             </details>
         </li>
@@ -36,13 +50,15 @@
                 </summary>
                 <div class="w-100 bg-light p-2 border rounded">
                     <div class="w-100 text-dark mb-3">
-                        <label for="skill" class="form-label">Skill:</label>
+                        <label for="skill" class="form-label fw-medium px-1">Skill:</label>
                         <div class="input-group input-group-sm mb-3">
                             <input class="form-control" placeholder="Write a skill..." id="skill" name="skill" type="text">
                             <button class="btn btn-outline-success send-skill" type="button">Add</button>
                         </div>
                     </div>
-                    <ul class="user-skills-list"></ul>
+                    <h4 class="text-center">List</h4>
+                    <hr>
+                    <ul class="user-skills-list d-flex flex-column gap-4 p-2"></ul>
                 </div>
             </details>
         </li>
@@ -64,10 +80,42 @@
 </div>
 
 <script>
-    document.querySelector(".show-user-skills").addEventListener('click', function(){
-        getAllUserSkills(getLocalStorageValue("id_user"))
+    document.querySelector(".show-user-skills").closest('details').addEventListener('click', function(){
+        if (!this.hasAttribute("open")) {
+            getAllUserSkills(getLocalStorageValue("id_user"));
+        }
+    })
+    document.querySelector(".show-user-jobs").closest('details').addEventListener('click', function(){
+        if (!this.hasAttribute("open")) {
+            getAllUserJobs(getLocalStorageValue("id_user"));
+        }
     })
 
+    document.querySelector('.send-job').addEventListener('click', function () {
+        // Capturar los valores del formulario
+        let job = $('#job').val();
+        let jobposition = $('#jobposition').val();
+        let jobstartdate = $('#jobstartdate').val();
+        let jobenddate  = $('#jobenddate').val();
+        let joblocation = $('#joblocation').val();
+        let jobmode = $('#jobmode').val();
+        let jobdescription  = $('#jobdescription').val();
+        // Construir el objeto con los datos del formulario
+        var formData = {
+            Name: job,
+            Position: jobposition,
+            Start_date: jobstartdate,
+            End_date: jobenddate,
+            Location: joblocation,
+            Mode: jobmode,
+            Description: jobdescription,
+            Status: true,
+            Id_User: parseInt(getLocalStorageValue("id_user"))
+        };
+
+        postJob(formData);
+    })
+    
     document.querySelector('.send-skill').addEventListener('click', function () {
         // Capturar los valores del formulario
         var skill = $('#skill').val();
@@ -80,4 +128,5 @@
 
         postSkill(formData);
     })
+
 </script>
