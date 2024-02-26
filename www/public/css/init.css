@@ -72,7 +72,7 @@ ul{
     }
 }
 .config-data{
-    ul:where(.user-skills-list, .user-jobs-list, .user-educations-list){
+    ul:where(.user-skills-list, .user-jobs-list, .user-educations-list, .user-socials-list){
         li:hover{
             input.form-control, textarea.form-control, .btn-outline-primary, .btn-education-delete-file{
                 display: block;

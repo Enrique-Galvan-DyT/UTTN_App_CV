@@ -119,10 +119,10 @@
                                 <input class="form-check-input social-is-portfolio" type="checkbox" role="switch" id="social-is-portfolio">
                             </div>
                             <div>
-                                <label for="link" class="form-label fw-medium px-1">Link:</label>
-                                <input class="form-control" placeholder="https://" id="link" name="link" type="text">
+                                <label for="social-link" class="form-label fw-medium px-1">Link:</label>
+                                <input class="form-control" placeholder="https://" id="social-link" name="social-link" type="text">
                             </div>
-                            <button class="btn btn-outline-success send-skill" type="button">Add</button>
+                            <button class="btn btn-outline-success send-social" type="button">Add</button>
                         </div>
                     </div>
                     <h4 class="text-center">List</h4>
@@ -183,7 +183,12 @@
             getAllUserEducations(getLocalStorageValue("id_user"));
         }
     })
-
+    document.querySelector(".show-user-socials").closest('details').addEventListener('click', function(){
+        if (!this.hasAttribute("open")) {
+            getAllUserSocials(getLocalStorageValue("id_user"));
+        }
+    })
+    
     document.querySelector('.send-job').addEventListener('click', function () {
         // Capturar los valores del formulario
         let job = $('#job').val();
@@ -208,11 +213,24 @@
 
         postJob(formData);
     })
-    
     document.querySelector('.send-education').addEventListener('click', function () {
-        postEducation();
-    })
+        // Capturar los valores del formulario
+        let education = $('#education').val();
+        let educationdescription  = $('#educationdescription').val();
+        let educationlocation = $('#educationlocation').val();
+        let education_file = document.querySelector('#education_file').files[0];
+        let educationdocument_display_option = $('#educationdocument_display_option').val();
 
+        // Construir el objeto con los datos del formulario
+        var formData = new FormData()
+        formData.append("Name", education);
+        formData.append("Description", educationdescription);
+        formData.append("Location", educationlocation);
+        formData.append("Document_Display_Option", parseInt(educationdocument_display_option));
+        formData.append("file", education_file);
+        formData.append("Id_User", parseInt(getLocalStorageValue("id_user")));
+        postEducation(formData);
+    })
     document.querySelector('.send-skill').addEventListener('click', function () {
         // Capturar los valores del formulario
         var skill = $('#skill').val();
@@ -224,6 +242,24 @@
         };
 
         postSkill(formData);
+    })
+    document.querySelector('.send-social').addEventListener('click', function () {
+        // Capturar los valores del formulario
+        var social = $('#social').val();
+        var description = $('#socialdescription').val();
+        var is_portfolio = document.querySelector('#social-is-portfolio').checked;
+        var link = $('#social-link').val();
+
+        // Construir el objeto con los datos del formulario
+        var formData = {
+            Name: social,
+            Description: description,
+            Is_Portfolio: is_portfolio,
+            Link: link,
+            Id_User: parseInt(getLocalStorageValue("id_user"))
+        };
+
+        postSocial(formData);
     })
 
 </script>

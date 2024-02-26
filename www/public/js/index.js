@@ -48,6 +48,9 @@ function loadPartialView(viewName, divClass = null, isAppend = false, item = nul
                 }    
                 if(functionName=="getAllUserEducations"){
                     setEducationData(item, divClass.lastChild)
+                }  
+                if(functionName=="getAllUserSocials"){
+                    setSocialData(item, divClass.lastChild)
                 }    
             }
             return true;

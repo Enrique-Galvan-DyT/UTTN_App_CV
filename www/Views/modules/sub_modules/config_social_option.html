@@ -1,0 +1,39 @@
+<li class="social-item d-flex align-items-center justify-content-between border border-3 p-2">
+    <div class="d-flex justify-content-between pe-2 w-100">
+        <div class="m-0 d-flex flex-column gap-3">
+            <div class="m-0 d-flex flex-column gap-3">
+                <span class="social-name">Texto</span>
+                <input type="text" class="social-name-edit form-control" placeholder="Nuevo nombre">
+            </div>
+            
+            <div class="form-check form-switch">
+                <label class="form-check-label label-social-is-portfolio">Is portfolio</label>
+                <input class="form-check-input social-is-portfolio" type="checkbox" role="switch">
+            </div>
+            
+            <div class="d-flex flex-column gap-3">
+                <span class="social-description">Descripción</span>
+                <textarea id="" class="social-description-edit form-control" cols="60" rows="3" placeholder="Nueva descripción"></textarea>
+            </div>
+    
+            <div class="m-0 d-flex flex-column gap-3">
+                <span class="social-link">Link</span>
+                <input type="text" class="social-link-edit form-control" placeholder="Nuevo link">
+            </div>
+        </div>
+
+        <div class="form-check form-switch">
+            <label class="form-check-label label-social-status">Status</label>
+            <input class="form-check-input social-status" type="checkbox" role="switch">
+        </div>
+    </div>
+
+    <div class="d-flex flex-column gap-2">
+        <button type="button" class="btn btn-sm btn-outline-danger btn-social-delete">
+            <i class="bi bi-trash3-fill"></i>
+        </button>
+        <button type="button" class="btn btn-sm btn-outline-primary btn-social-edit">
+            <i class="bi bi-pencil-square"></i>
+        </button>
+    </div>
+</li>

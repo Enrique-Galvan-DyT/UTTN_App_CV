@@ -12,12 +12,6 @@ const loginUser_route = env + "Users/login"
 const dataUser_route = env + "Users/"
 const totalUser_route = env + "Users/GetTotalUsers"
 
-//Skills API
-const allUserSkills_route = env + "Skills/getUserSkills/"
-const postSkill_route = env + "Skills"
-const editSkill_route = env + "Skills/"
-const deleteSkill_route = env + "Skills/"
-
 //Jobs API
 const allUserJobs_route = env + "Jobs/getUserJobs/"
 const postJob_route = env + "Jobs"
@@ -31,3 +25,16 @@ const editEducation_route = env + "Educations/"
 const editEducationFile_route = env + "Educations/putEducationsFile/"
 const deleteEducationFile_route = env + "Educations/deleteEducationsFile/"
 const deleteEducation_route = env + "Educations/"
+
+//Skills API
+const allUserSkills_route = env + "Skills/getUserSkills/"
+const postSkill_route = env + "Skills"
+const editSkill_route = env + "Skills/"
+const deleteSkill_route = env + "Skills/"
+
+//Socials API
+const allUserSocials_route = env + "Socials/getUserSocials/"
+const postSocial_route = env + "Socials"
+const editSocial_route = env + "Socials/"
+const deleteSocial_route = env + "Socials/"
+

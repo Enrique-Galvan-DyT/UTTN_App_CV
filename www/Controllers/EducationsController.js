@@ -21,22 +21,7 @@ function getAllUserEducations(id) {
     });   
 }
 
-function postEducation() {
-    // Capturar los valores del formulario
-    let education = $('#education').val();
-    let educationdescription  = $('#educationdescription').val();
-    let educationlocation = $('#educationlocation').val();
-    let education_file = document.querySelector('#education_file').files[0];
-    let educationdocument_display_option = $('#educationdocument_display_option').val();
-
-    // Construir el objeto con los datos del formulario
-    var formData = new FormData()
-    formData.append("Name", education);
-    formData.append("Description", educationdescription);
-    formData.append("Location", educationlocation);
-    formData.append("Document_Display_Option", parseInt(educationdocument_display_option));
-    formData.append("file", education_file);
-    formData.append("Id_User", parseInt(getLocalStorageValue("id_user")));
+function postEducation(formData) {
     // Enviar la solicitud AJAX
     $.ajax({
         url: postEducation_route,
