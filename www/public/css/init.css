@@ -5,6 +5,9 @@
     margin: 0;
     padding: 0;
 }
+body{
+    padding-top: 10vh;
+}
 
 /*Pantallas movil*/
 .app{
@@ -69,14 +72,21 @@ ul{
     }
 }
 .config-data{
-    ul:where(.user-skills-list, .user-jobs-list){
+    ul:where(.user-skills-list, .user-jobs-list, .user-educations-list){
         li:hover{
-            input.form-control, textarea.form-control, .btn-outline-primary{
+            input.form-control, textarea.form-control, .btn-outline-primary, .btn-education-delete-file{
                 display: block;
             }    
         }
-        input.form-control, textarea.form-control, .btn-outline-primary{
+        input.form-control, textarea.form-control, .btn-outline-primary, .btn-education-delete-file{
             display: none;
+        }
+
+        img{
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            object-position: center;
         }
     }
 }

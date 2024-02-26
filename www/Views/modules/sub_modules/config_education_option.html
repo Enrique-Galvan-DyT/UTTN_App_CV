@@ -1,0 +1,53 @@
+<li class="education-item d-flex align-items-center justify-content-between border border-3 p-2">
+    <div class="d-flex justify-content-between pe-2 w-100">
+        <div class="m-0 d-flex flex-column gap-3">
+            <div class="d-flex flex-column gap-3">
+                <span class="education-name">Texto</span>
+                <input type="text" class="education-name-edit form-control" placeholder="Nuevo nombre">
+            </div>
+            
+            <div class="d-flex flex-column gap-3">
+                <span class="education-description">Descripción</span>
+                <textarea id="" class="education-description-edit form-control" cols="60" rows="3" placeholder="Nueva descripción"></textarea>
+            </div>
+            
+            <div class="d-flex flex-column gap-3">
+                <span class="education-location">Ubicación</span>
+                <input type="text" class="education-location-edit form-control" placeholder="Nueva ubicación">
+            </div>
+            
+            <div class="d-flex flex-column gap-3">
+                <span class="education-document-display-option">Display option:</span>
+                <select class="form-select education-document-display-option-edit">
+                    <option value="0">Hide</option>
+                    <option value="1">Show only</option>
+                    <option value="2">Download only</option>
+                </select>
+            </div>
+
+            <div class="d-flex flex-column gap-3">
+                <span class="education-content">Contenido</span>
+                <div class="education-content-preview border border-2 rounded"></div>
+                <input type="file" class="form-control education_file_edit" id="education_file_edit" accept=".pdf,.png,.jpeg,.jpg" multiple="false">
+                <small class="text-danger">The file will be updated automatically if you choose a new one.</small>
+            </div>
+            
+        </div>
+        <div class="form-check form-switch">
+            <label class="form-check-label">Status</label>
+            <input class="form-check-input education-status" type="checkbox" role="switch">
+        </div>
+    </div>
+
+    <div class="d-flex flex-column gap-2">
+        <button type="button" class="btn btn-sm btn-outline-danger btn-education-delete-file">
+            <i class="bi bi-file-earmark-x"></i>
+        </button>
+        <button type="button" class="btn btn-sm btn-outline-danger btn-education-delete">
+            <i class="bi bi-trash3-fill"></i>
+        </button>
+        <button type="button" class="btn btn-sm btn-outline-primary btn-education-edit">
+            <i class="bi bi-pencil-square"></i>
+        </button>
+    </div>
+</li>

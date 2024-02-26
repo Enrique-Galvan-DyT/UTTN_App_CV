@@ -46,6 +46,9 @@ function loadPartialView(viewName, divClass = null, isAppend = false, item = nul
                 if(functionName=="getAllUserJobs"){
                     setJobData(item, divClass.lastChild)
                 }    
+                if(functionName=="getAllUserEducations"){
+                    setEducationData(item, divClass.lastChild)
+                }    
             }
             return true;
             //When all modules load, remove all placeholders

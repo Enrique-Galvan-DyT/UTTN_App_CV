@@ -39,11 +39,12 @@
         <script src="Controllers/UsersController.js"></script>
         <script src="Controllers/SkillsController.js"></script>
         <script src="Controllers/JobsController.js"></script>
+        <script src="Controllers/EducationsController.js"></script>
         <script src="public/js/jquery-3.2.1.min.js"></script>
     </head>
     <body class="bg-body-secondary">
         <!--Navbar-->
-        <nav class="w-100 nav-init position-sticky top-0 z-3">
+        <nav class="w-100 nav-init position-fixed top-0 z-3">
 
         </nav>
         
@@ -58,8 +59,8 @@
         <script>
             //Declare base variables
             body = document.querySelector('body');
-            appRender = body.querySelector('.app');
             navRender = body.querySelector('.nav-init');
+            appRender = body.querySelector('.app');
 
             loadPartialView('home/navbar', navRender);
             loadPartialView('home/init', appRender);

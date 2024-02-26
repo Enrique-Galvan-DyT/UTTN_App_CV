@@ -23,3 +23,11 @@ const allUserJobs_route = env + "Jobs/getUserJobs/"
 const postJob_route = env + "Jobs"
 const editJob_route = env + "Jobs/"
 const deleteJob_route = env + "Jobs/"
+
+//Educations API
+const allUserEducations_route = env + "Educations/getUserEducations/"
+const postEducation_route = env + "Educations"
+const editEducation_route = env + "Educations/"
+const editEducationFile_route = env + "Educations/putEducationsFile/"
+const deleteEducationFile_route = env + "Educations/deleteEducationsFile/"
+const deleteEducation_route = env + "Educations/"
