@@ -101,9 +101,9 @@ ul{
         filter: drop-shadow(1px 1px 0px gray);
     }
     .nav-user-profile{
-        width: 2rem;
-        height: 2rem;
-        object-fit: contain;
+        width: 3rem;
+        height: 3rem;
+        object-fit: cover;
         transition: transform .4s ease;
         transform: scale(1);
         &:hover{

@@ -21,6 +21,34 @@ function getAllUserEducations(id) {
     });   
 }
 
+function getAllEducations() {
+    $.ajax({
+        url: allEducations_route,
+        method: 'GET',
+        contentType: 'application/json',
+        success: function(response) {
+            console.table(response)
+            educations = response;
+            let ul = document.querySelector('.education-list');
+            ul.innerHTML = "";
+            response.forEach(education => {
+                loadPartialView('modules/sub_modules/educations_option_list', document.querySelector('.education-list'), true, education, "getAllEducations");
+            });
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            // Manejar cualquier error que ocurra durante la solicitud AJAX
+            console.error('Error:', textStatus, errorThrown);
+        }
+    });   
+}
+
+function setEducationList(li, education){
+    console.log(li);
+    li.id = ('education_id_' + education.Id_Education);
+    li.querySelector('.education-name').innerText = education.Name;
+    cleanPlaceholders('#' + li.id);
+}
+
 function postEducation(formData) {
     // Enviar la solicitud AJAX
     $.ajax({
@@ -48,31 +76,30 @@ function postEducation(formData) {
     });   
 }
 
-
 function setEducationData(education, li) {
     li.id = "education-" + education.Id_Education;
 
-    li.querySelector('.education-name').innerHTML = '<span class="fw-bold">Nombre</span>: ' + education.Name;
+    li.querySelector('.education-name').innerHTML = '<span class="fw-bold">Nombre</span>: <br/>' + education.Name;
     education.Status ? null : li.querySelector('.education-name').classList.add('opacity-50');
     li.querySelector('.education-item .education-name-edit').value = education.Name;
     li.querySelector('.education-item .education-name-edit').id = "education-name-edit-" + education.Id_Education;
     
-    li.querySelector('.education-description').innerHTML = '<span class="fw-bold">Descripción</span>: ' + education.Description;
+    li.querySelector('.education-description').innerHTML = '<span class="fw-bold">Descripción</span>: <br/>' + education.Description;
     education.Status ? null : li.querySelector('.education-description').classList.add('opacity-50');
     li.querySelector('.education-item .education-description-edit').value = education.Description;
     li.querySelector('.education-item .education-description-edit').id = "education-description-edit-" + education.Id_Education;
     
-    li.querySelector('.education-location').innerHTML = '<span class="fw-bold">Ubicación</span>: ' + education.Location;
+    li.querySelector('.education-location').innerHTML = '<span class="fw-bold">Ubicación</span>: <br/>' + education.Location;
     education.Status ? null : li.querySelector('.education-location').classList.add('opacity-50');
     li.querySelector('.education-item .education-location-edit').value = education.Location;
     li.querySelector('.education-item .education-location-edit').id = "education-location-edit-" + education.Id_Education;
     
-    li.querySelector('.education-document-display-option').innerHTML = '<span class="fw-bold">Display option</span>: ' + education.Document_Display_Option;
+    li.querySelector('.education-document-display-option').innerHTML = '<span class="fw-bold">Display option</span>: <br/>' + education.Document_Display_Option;
     education.Status ? null : li.querySelector('.education-document-display-option').classList.add('opacity-50');
     li.querySelector('.education-item .education-document-display-option-edit').value = parseInt(education.Document_Display_Option);
     li.querySelector('.education-item .education-document-display-option-edit').id = "education-document-display-option-edit-" + education.Id_Education;
     
-    li.querySelector('.education-content').innerHTML = '<span class="fw-bold">Content</span>: ' + (education.Document_Route != null ? education.Document_Route.split('\\')[education.Document_Route.split('\\').length-1].split('=')[1] : "Empty");
+    li.querySelector('.education-content').innerHTML = '<span class="fw-bold">Content</span>: <br/>' + (education.Document_Route != null ? education.Document_Route.split('\\')[education.Document_Route.split('\\').length-1].split('=')[1] : "Empty");
     education.Status ? null : li.querySelector('.education-content').classList.add('opacity-50');
     
     // Obtener el elemento donde deseas mostrar el archivo
@@ -88,13 +115,13 @@ function setEducationData(education, li) {
         if (fileExtension === 'jpg' || fileExtension === 'jpeg' || fileExtension === 'png') {
             // Si es una imagen, crear una etiqueta img
             fileElement = document.createElement('img');
-            fileElement.src = education.Document_Route;
+            fileElement.src = env.split('api')[0] + "Content/Educations/" + education.Document_Route.split('\\')[education.Document_Route.split('\\').length-1];
         } else if (fileExtension === 'pdf') {
             // Si es un PDF, crear una etiqueta embed
             fileElement = document.createElement('embed');
-            fileElement.src = education.Document_Route;
+            fileElement.src = env.split('api')[0] + "Content/Educations/" + education.Document_Route.split('\\')[education.Document_Route.split('\\').length-1];
             fileElement.type = 'application/pdf';
-            fileElement.width = '600';
+            fileElement.width = '100%';
             fileElement.height = '400';
         } else {
             // Si es otro tipo de archivo no compatible, mostrar un mensaje de error
@@ -231,3 +258,119 @@ function deleteEducationFile(id) {
     });   
 }
 
+function getEducationsData(id) {
+    $.ajax({
+        url: allUserEducations_route + id,
+        method: 'GET',
+        contentType: 'application/json',
+        success: function(response) {
+            console.table(response)
+
+            if(response.Success)
+            {
+                preloadModule("sub_modules/educations_option")
+                .done(function(data) {
+                    printProfileUserEducation(response.value, data)
+                })
+                .fail(function(xhr, status, error) {
+                    console.error('Error al cargar módulo educations_option: ', error);
+                });
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            // Manejar cualquier error que ocurra durante la solicitud AJAX
+            console.error('Error:', textStatus, errorThrown);
+        }
+    });   
+}
+
+function printProfileUserEducation(educations, li) {
+    console.table(educations)
+    let ul = document.querySelector('.education-list');
+    ul.innerHTML = "";
+    educations.forEach(education => {
+        ul.innerHTML += li;
+        ul.lastChild.querySelector('.education-name').innerText = education.Name;
+        ul.lastChild.querySelector('.education-description').innerText = education.Description;
+        
+        // Verificar si la ruta del documento está definida
+        if (education.Has_Document) {
+            // Obtener la extensión del archivo
+            let fileExtension = education.Document_Route.split('.').pop().toLowerCase();
+
+            // Crear dinámicamente la etiqueta correspondiente
+            if (fileExtension === 'jpg' || fileExtension === 'jpeg' || fileExtension === 'png') {
+                // Si es una imagen, crear una etiqueta img
+                if(education.Document_Display_Option == 1){
+                    ul.lastChild.querySelector('div:first-child').innerHTML = '<div>'
+                    + '<img src="' + env.split('api')[0] + "Content/Educations/" + education.Document_Route.split('\\')[education.Document_Route.split('\\').length-1] + '" alt="'+ education.Document_Route.split('\\')[education.Document_Route.split('\\').length-1] + '" class="h-auto education-route placeholder" style="width: 4rem;">'
+                    + '</div>';
+                }else if(education.Document_Display_Option == 2){
+                    ul.lastChild.querySelector('div:first-child').innerHTML = '<div>'
+                    +'<a href="#" onclick="descargarArchivo(' + education.Id_Education + ')" class="text-decoration-none" style="font-size: 3rem;"><i class="bi bi-cloud-download"></i></a>'
+                    +'</div>';
+                }else{
+                    ul.lastChild.querySelector('div:first-child').innerHTML = '<div>'
+                    + '<i class="bi bi-image text-white education-route" style="font-size: 3rem;"></i>'
+                    + '</div>';
+                }
+
+            } else if (fileExtension === 'pdf') {
+                // Si es un PDF, crear una etiqueta embed
+                if(education.Document_Display_Option == 2){
+                    ul.lastChild.querySelector('div:first-child').innerHTML = '<div>'
+                    +'<a href="#" onclick="descargarArchivo(' + education.Id_Education + ')" class="text-decoration-none" style="font-size: 3rem;"><i class="bi bi-cloud-download"></i></a>'
+                    +'</div>';
+                }else{
+                    ul.lastChild.querySelector('div:first-child').innerHTML = '<div>'
+                    + '<i class="bi bi-filetype-pdf text-white education-route" style="font-size: 3rem;"></i>'
+                    + '</div>';
+                }
+            } else {
+                // Si es otro tipo de archivo no compatible, mostrar un mensaje de error
+                ul.lastChild.querySelector('div:first-child').innerHTML = '<div>'
+                + '<i class="bi bi-question-square text-white education-route" style="font-size: 3rem;"></i>'
+                + '</div>';
+                return; // Salir de la función
+            }
+            
+            // Agregar la etiqueta al elemento deseado en el DOM
+        } else {
+            // Si la ruta del documento no está definida, mostrar un mensaje de error o vacío
+            ul.lastChild.querySelector('div:first-child').innerHTML = '<div>'
+            + '<i class="bi bi-mortarboard text-white education-route" style="font-size: 3rem;"></i>'
+            + '</div>';
+        }
+    });
+    cleanPlaceholders('.educations-data')
+}
+
+function descargarArchivo(id) {
+    fetch(downloadEducationFile_route + id)
+    .then(response => {
+        // Verificar si la solicitud fue exitosa
+        if (!response.ok) {
+            throw new Error('Error al descargar el archivo');
+        }
+        console.log('Archivo descargado correctamente');
+    })
+    .catch(error => console.error('Error al descargar el archivo:', error));
+}
+
+function getTotalEducations(id, element) {
+    $.ajax({
+        url: getEducationsCount_route + id,
+        method: 'GET',
+        contentType: 'application/json',
+        success: function(response) {
+            console.table(response)
+            if(element.querySelector('.total_educations')){
+                element.querySelector('.total_educations').innerText = response; 
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            // Manejar cualquier error que ocurra durante la solicitud AJAX
+            console.error('Error:', textStatus, errorThrown);
+        }
+    });   
+}

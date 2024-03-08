@@ -37,6 +37,15 @@ function loadPartialView(viewName, divClass = null, isAppend = false, item = nul
                 if(functionName=="getAllUsers"){
                     setUserList(divClass.lastChild, item)
                 }
+                if(functionName=="getAllJobs"){
+                    setJobList(divClass.lastChild, item)
+                }
+                if(functionName=="getAllSkills"){
+                    setSkillList(divClass.lastChild, item)
+                }
+                if(functionName=="getAllEducations"){
+                    setEducationList(divClass.lastChild, item)
+                }
                 if (functionName=="getUserData") {
                     setUserData(item)
                 }
@@ -141,15 +150,20 @@ function cleanPlaceholders(divClass) {
 
 function updateNavBar() {
     if (getLocalStorageValue("id_user") == null) {
-        document.querySelector('.btn-login').classList.remove('d-none');
+        if (document.querySelector('.btn-login')){
+            document.querySelector('.btn-login').classList.remove('d-none');
+        }
         document.querySelector('.btn-signup').classList.remove('d-none');
         document.querySelector('.btn-config').classList.add('d-none');
         document.querySelector('.btn-signout').classList.add('d-none');
     }else{
-        document.querySelector('.btn-login').classList.add('d-none');
+        if (document.querySelector('.btn-login')){
+            document.querySelector('.btn-login').classList.add('d-none');
+        }           
         document.querySelector('.btn-signup').classList.add('d-none');
         document.querySelector('.btn-config').classList.remove('d-none');
         document.querySelector('.btn-signout').classList.remove('d-none');
+        getUserData(getLocalStorageValue("id_user"), "navbar")
     }
 }
 

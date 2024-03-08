@@ -1,0 +1,39 @@
+<div class="user-signup w-100 p-3">
+    <form>
+        <div class="mb-3">
+            <label for="user-email" class="form-label">Email address:</label>
+            <input type="email" class="form-control" id="user-email" name="user-email" aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="mb-3">
+            <label for="user-password" class="form-label">Password:</label>
+            <input type="password" class="form-control" id="user-password" name="user-password">
+        </div>
+        <div class="mb-3">
+            <label for="user-password" for="user-type" class="form-label">User type:</label>
+            <select class="form-select" id="user-type" name="user-type" aria-label="User type select">
+                <option value="Student" selected>Student</option>
+                <option value="Teacher">Teacher</option>
+              </select>
+        </div>
+        <button type="button" class="btn-login-form btn btn-primary">Create</button>
+    </form>
+</div>
+
+<script>
+    document.querySelector('.btn-login-form').addEventListener('click', function () {
+        // Capturar los valores del formulario
+        var userEmail = $('#user-email').val();
+        var userPassword = $('#user-password').val();
+        var userType = $('#user-type').val();
+
+        // Construir el objeto con los datos del formulario
+        var formData = {
+            email: userEmail,
+            password: userPassword,
+            type: userType
+        };
+
+        signup(formData);
+    });
+</script>

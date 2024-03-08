@@ -24,12 +24,12 @@ function getAllUserSocials(id) {
 function setSocialData(social, li) {
     li.id = "social-" + social.Id_Social;
 
-    li.querySelector('.social-name').innerHTML = '<span class="fw-bold">Nombre</span>: ' + social.Name;
+    li.querySelector('.social-name').innerHTML = '<span class="fw-bold">Nombre</span>: <br/>' + social.Name;
     social.Status ? null : li.querySelector('.social-name').classList.add('opacity-50');
     li.querySelector('.social-item .social-name-edit').value = social.Name;
     li.querySelector('.social-item .social-name-edit').id = "social-name-edit-" + social.Id_Social;
     
-    li.querySelector('.social-description').innerHTML = '<span class="fw-bold">Descripción</span>: ' + social.Description;
+    li.querySelector('.social-description').innerHTML = '<span class="fw-bold">Descripción</span>: <br/>' + social.Description;
     social.Status ? null : li.querySelector('.social-description').classList.add('opacity-50');
     li.querySelector('.social-item .social-description-edit').value = social.Description;
     li.querySelector('.social-item .social-description-edit').id = "social-description-edit-" + social.Id_Social;
@@ -40,7 +40,7 @@ function setSocialData(social, li) {
     li.querySelector('.social-item .label-social-is-portfolio').innerText = (social.Is_Portfolio ? "Portfolio" : "Personal");
     li.querySelector('.social-item .social-is-portfolio').checked = social.Is_Portfolio;
     
-    li.querySelector('.social-link').innerHTML = '<span class="fw-bold">Link</span>: ' + social.Link;
+    li.querySelector('.social-link').innerHTML = '<span class="fw-bold">Link</span>: <br/>' + social.Link;
     social.Status ? null : li.querySelector('.social-link').classList.add('opacity-50');
     li.querySelector('.social-item .social-link-edit').value = social.Link;
     li.querySelector('.social-item .social-link-edit').id = "social-link-edit-" + social.Id_Social;

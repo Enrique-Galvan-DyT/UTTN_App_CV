@@ -1,6 +1,92 @@
 <div class="config-data">
     <ul class="p-0 text-dark d-flex flex-column gap-5">
         <li class="w-100">
+            <div class="w-100 bg-light p-2 border rounded">
+                <div class="w-100 text-dark mb-3">
+                    <label class="form-label fw-medium px-1 w-100 text-center text-secondary">User form</label>
+                    <div class="d-flex flex-column gap-4">
+                        <div class="input-group mb-3 row mx-0">
+                            <label for="user_file" class="form-label fw-medium px-1">Picture:</label>
+                            <div id="previewProfileContainer">
+                                <img height="auto" width="100%" src="" alt="">
+                            </div>
+                            <input type="file" class="form-control user_file" id="user_file" accept=".png,.jpeg,.jpg" onchange="changePictureFile(this)" multiple="false">
+                        </div>
+                        <hr>
+                        <div>
+                            <input class="form-control" id="user-document-route-edit" name="user-document-route-edit" type="hidden" />
+                        </div>
+                        
+                        <div>
+                            <label for="user-email-edit" class="form-label fw-medium px-1">Email:</label>
+                            <input class="form-control" id="user-email-edit" name="user-email-edit" type="email" />
+                        </div>
+                        
+                        <div>
+                            <label for="user-password-edit" class="form-label fw-medium px-1">Password:</label>
+                            <input class="form-control" id="user-password-edit" name="user-password-edit" type="password" />
+                        </div>
+                        
+                        <div>
+                            <label for="user-title-edit" class="form-label fw-medium px-1">Title:</label>
+                            <input class="form-control" id="user-title-edit" name="user-title-edit" type="text" />
+                        </div>
+                        
+                        <div>
+                            <label for="user-name-edit" class="form-label fw-medium px-1">Name:</label>
+                            <input class="form-control" id="user-name-edit" name="user-name-edit" type="text">
+                        </div>
+
+                        <div>
+                            <label for="user-lastname-edit" class="form-label fw-medium px-1">LastName:</label>
+                            <input class="form-control" id="user-lastname-edit" name="user-lastname-edit" type="text">
+                        </div>                        
+
+                        <div>
+                            <label for="user-age-edit" class="form-label fw-medium px-1">Age:</label>
+                            <input class="form-control" id="user-age-edit" name="user-age-edit" type="number">
+                        </div>
+
+                        <div>
+                            <label for="user-location-edit" class="form-label fw-medium px-1">Location:</label>
+                            <input class="form-control" id="user-location-edit" name="user-location-edit" type="text">
+                        </div>
+                        
+                        <div>
+                            <label for="user-description-edit" class="form-label fw-medium px-1">Description:</label>
+                            <textarea class="form-control" id="user-description-edit" name="user-description-edit" cols="60" rows="3"></textarea>
+                        </div>
+
+                        <div class="form-check form-switch">
+                            <label class="form-check-label" for="user-status-edit">Status</label>
+                            <input class="form-check-input user-status-edit" type="checkbox" role="switch" id="user-status-edit">
+                        </div>
+                        
+                        <div>
+                            <label for="user-type-edit" class="form-label fw-medium px-1">Type:</label>
+                            <input class="form-control" id="user-type-edit" name="user-type-edit" type="text" disabled>
+                        </div>
+
+                        <div>
+                            <label for="user-background-edit" class="form-label fw-medium px-1">Background color:</label>
+                            <select class="form-select" name="user-background-edit" id="user-background-edit">
+                                <option value="bg-primary" selected>Blue</option>
+                                <option value="bg-danger">Red</option>
+                                <option value="bg-success">Green</option>
+                                <option value="bg-warning">Yellow</option>
+                                <option value="bg-secondary">Gray</option>
+                                <option value="bg-light">Light</option>
+                                <option value="bg-white">White</option>
+                                <option value="bg-dark">Dark</option>
+                            </select>
+                        </div>
+
+                        <button class="btn btn-outline-primary btn-block send-user-edit" type="button">Update</button>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="w-100">
             <details>
                 <summary class="d-flex align-self-center show-user-jobs">
                     <i class="bi bi-plus-circle-dotted me-2 fs-5 text-success"></i>
@@ -8,21 +94,48 @@
                 </summary>
                 <div class="w-100 bg-light p-2 border rounded">
                     <div class="w-100 text-dark mb-3">
-                        <label for="job" class="form-label fw-medium px-1 w-100 text-center">Job form</label>
+                        <label for="job" class="form-label fw-medium px-1 w-100 text-center text-secondary">Job form</label>
                             <div class="d-flex flex-column gap-4">
-                                <input class="form-control" placeholder="Job's name..." id="job" name="job" type="text">
-                                <input class="form-control" placeholder="Position..." id="jobposition" name="jobposition" type="text" />
-                                <input class="form-control" placeholder="dd/mm/yyyy..." id="jobstartdate" name="jobstartdate" type="date" />
-                                <input class="form-control" placeholder="dd/mm/yyyy..." id="jobenddate" name="jobenddate" type="date" />
-                                <input class="form-control" placeholder="Location..." id="joblocation" name="joblocation" type="text" />
-                                <input class="form-control" placeholder="Mode..." id="jobmode" name="jobmode" type="text" />
-                                <textarea class="form-control" placeholder="Description..." id="jobdescription" name="jobdescription" cols="60" rows="3"></textarea>
+                                <div>
+                                    <label for="job" class="form-label fw-medium px-1">Name:</label>
+                                    <input class="form-control" id="job" name="job" type="text">
+                                </div>
+                                
+                                <div>
+                                    <label for="jobposition" class="form-label fw-medium px-1">Position:</label>
+                                    <input class="form-control" id="jobposition" name="jobposition" type="text" />
+                                </div>
+                                
+                                <div>
+                                    <label for="jobstartdate" class="form-label fw-medium px-1">Start date:</label>
+                                    <input class="form-control" placeholder="dd/mm/yyyy..." id="jobstartdate" name="jobstartdate" type="date" />
+                                </div>
+                                
+                                <div>
+                                    <label for="jobenddate" class="form-label fw-medium px-1">End date:</label>
+                                    <input class="form-control" placeholder="dd/mm/yyyy..." id="jobenddate" name="jobenddate" type="date" />
+                                </div>
+                                
+                                <div>
+                                    <label for="joblocation" class="form-label fw-medium px-1">Location:</label>
+                                    <input class="form-control" id="joblocation" name="joblocation" type="text" />
+                                </div>
+                                
+                                <div>
+                                    <label for="jobmode" class="form-label fw-medium px-1">Mode:</label>
+                                    <input class="form-control" id="jobmode" name="jobmode" type="text" />
+                                </div>
+                                
+                                <div>
+                                    <label for="jobdescription" class="form-label fw-medium px-1">Description:</label>
+                                    <textarea class="form-control" id="jobdescription" name="jobdescription" cols="60" rows="3"></textarea>
+                                </div>
                                 <button class="btn btn-outline-success btn-block send-job" type="button">Add</button>
                             </div>
                     </div>
                     <h4 class="text-center">List</h4>
                     <hr>
-                    <ul class="user-jobs-list d-flex flex-column gap-4 p-2">
+                    <ul class="user-jobs-list d-flex flex-column gap-4 p-2 bg-light">
 
                     </ul>
                 </div>
@@ -36,21 +149,21 @@
                 </summary>
                 <div class="w-100 bg-light p-2 border rounded">
                     <div class="w-100 text-dark mb-3">
-                        <label for="education" class="form-label fw-medium px-1 w-100 text-center">Education form</label>
+                        <label for="education" class="form-label fw-medium px-1 w-100 text-center text-secondary">Education form</label>
                         <div class="d-flex flex-column gap-4">
                             <div>
                                 <label for="education" class="form-label fw-medium px-1">Name:</label>
-                                <input class="form-control" placeholder="Education's name..." id="education" name="education" type="text">
+                                <input class="form-control" id="education" name="education" type="text">
                             </div>
                             
                             <div>
                                 <label for="educationdescription" class="form-label fw-medium px-1">Description:</label>
-                                <textarea class="form-control" placeholder="Description..." id="educationdescription" name="educationdescription" cols="60" rows="3"></textarea>
+                                <textarea class="form-control" id="educationdescription" name="educationdescription" cols="60" rows="3"></textarea>
                             </div>
                             
                             <div>
                                 <label for="educationlocation" class="form-label fw-medium px-1">Location:</label>
-                                <input class="form-control" placeholder="Location..." id="educationlocation" name="educationlocation" type="text" />
+                                <input class="form-control" id="educationlocation" name="educationlocation" type="text" />
                             </div>
                             
                             <div class="input-group mb-3 row mx-0">
@@ -84,10 +197,13 @@
                 </summary>
                 <div class="w-100 bg-light p-2 border rounded">
                     <div class="w-100 text-dark mb-3">
-                        <label for="skill" class="form-label fw-medium px-1 w-100 text-center">Skill form</label>
-                        <div class="input-group input-group-sm mb-3">
-                            <input class="form-control" placeholder="Write a skill..." id="skill" name="skill" type="text">
-                            <button class="btn btn-outline-success send-skill" type="button">Add</button>
+                        <label for="skill" class="form-label fw-medium px-1 w-100 text-center text-secondary">Skill form</label>
+                        <div class="d-flex flex-column gap-4">
+                            <div>
+                                <label for="skill" class="form-label fw-medium px-1">Name:</label>
+                                <input class="form-control" id="skill" name="skill" type="text">
+                            </div>
+                            <button class="btn btn-outline-success btn-block send-skill" type="button">Add</button>
                         </div>
                     </div>
                     <h4 class="text-center">List</h4>
@@ -104,15 +220,15 @@
                 </summary>
                 <div class="w-100 bg-light p-2 border rounded">
                     <div class="w-100 text-dark mb-3">
-                        <label for="social" class="form-label fw-medium px-1 w-100 text-center">Social form</label>
+                        <label for="social" class="form-label fw-medium px-1 w-100 text-center text-secondary">Social form</label>
                         <div class="d-flex flex-column gap-4">
                             <div>
                                 <label for="social" class="form-label fw-medium px-1">Social:</label>
-                                <input class="form-control" placeholder="Social's name..." id="social" name="social" type="text">
+                                <input class="form-control" id="social" name="social" type="text">
                             </div>
                             <div>
                                 <label for="socialdescription" class="form-label fw-medium px-1">Description:</label>
-                                <textarea class="form-control" placeholder="Description..." id="socialdescription" name="socialdescription" cols="60" rows="3"></textarea>
+                                <textarea class="form-control" id="socialdescription" name="socialdescription" cols="60" rows="3"></textarea>
                             </div>
                             <div class="form-check form-switch">
                                 <label class="form-check-label" for="social-is-portfolio">Is portfolio</label>
@@ -161,6 +277,29 @@
                 embed.width = '100%'; // Establecer el ancho del embed al 100% del contenedor
                 embed.height = '600'; // Establecer una altura fija para el PDF
                 previewContainer.appendChild(embed); // Agregar el embed al contenedor de vista previa
+            } else {
+                // Si es otro tipo de archivo, mostrar un mensaje de error
+                previewContainer.innerHTML = '<p>Unsupported file type</p>';
+            }
+        }
+    });
+    
+    document.getElementById('user_file').addEventListener('change', function() {
+        var file = this.files[0]; // Obtener el archivo seleccionado
+        
+        if (file) {
+            var previewContainer = document.getElementById('previewProfileContainer');
+            previewContainer.innerHTML = ''; // Limpiar el contenedor de vista previa
+            
+            var fileType = file.type; // Obtener el tipo MIME del archivo
+            
+            if (fileType.startsWith('image/')) {
+                // Si es una imagen, mostrarla en una etiqueta img
+                var img = document.createElement('img');
+                img.classList.add("bg-secondary") // Añadir un fondo por defecto
+                img.src = URL.createObjectURL(file); // Crear una URL para la imagen seleccionada
+                img.style.maxWidth = '100%'; // Establecer un ancho máximo para la imagen
+                previewContainer.appendChild(img); // Agregar la imagen al contenedor de vista previa
             } else {
                 // Si es otro tipo de archivo, mostrar un mensaje de error
                 previewContainer.innerHTML = '<p>Unsupported file type</p>';
@@ -249,7 +388,7 @@
         var description = $('#socialdescription').val();
         var is_portfolio = document.querySelector('#social-is-portfolio').checked;
         var link = $('#social-link').val();
-
+        
         // Construir el objeto con los datos del formulario
         var formData = {
             Name: social,
@@ -258,8 +397,39 @@
             Link: link,
             Id_User: parseInt(getLocalStorageValue("id_user"))
         };
-
+        
         postSocial(formData);
     })
+    
+    document.querySelector('.send-user-edit').addEventListener('click', function () {
+        // Capturar los valores del formulario
+        var user_email = document.querySelector('#user-email-edit').value;
+        var user_password = document.querySelector('#user-password-edit').value;
+        var user_title = document.querySelector('#user-title-edit').value;
+        var user_name = document.querySelector('#user-name-edit').value;
+        var user_lastname = document.querySelector('#user-lastname-edit').value;
+        var user_age = document.querySelector('#user-age-edit').value;
+        var user_location = document.querySelector('#user-location-edit').value;
+        var user_description = document.querySelector('#user-description-edit').value;
+        var user_status = document.querySelector('#user-status-edit').checked;
+        var user_type = document.querySelector('#user-type-edit').value;
+        var user_background = document.querySelector('#user-background-edit').value;
+        // Construir el objeto con los datos del formulario
+        var formData = {
+            Id_User: parseInt(getLocalStorageValue("id_user")),
+            Email: user_email,
+            Password: user_password,
+            Title: user_title,
+            Name: user_name,
+            Lastname: user_lastname,
+            Age: user_age,
+            Location: user_location,
+            Description: user_description,
+            Status: user_status,
+            Type: user_type,
+            Background: user_background
+        };
 
+        editUser(formData);
+    })
 </script>

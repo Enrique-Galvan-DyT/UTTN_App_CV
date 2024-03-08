@@ -108,3 +108,85 @@ function deleteSkill(id) {
         }
     });   
 }
+
+function getSkillsData(id) {
+    $.ajax({
+        url: allUserSkills_route + id,
+        method: 'GET',
+        contentType: 'application/json',
+        success: function(response) {
+            console.table(response)
+            if(response.Success)
+            {
+                preloadModule("sub_modules/skills_option")
+                .done(function(data) {
+                    printProfileUserSkill(response.value, data)
+                })
+                .fail(function(xhr, status, error) {
+                    console.error('Error al cargar módulo skills_option: ', error);
+                });
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            // Manejar cualquier error que ocurra durante la solicitud AJAX
+            console.error('Error:', textStatus, errorThrown);
+        }
+    });   
+}
+
+function printProfileUserSkill(skills, li) {
+    console.table(skills)
+    let ul = document.querySelector('.skill-list');
+    ul.innerHTML = "";
+    skills.forEach(skill => {
+        ul.innerHTML += li;
+        ul.lastChild.querySelector('.skill-name').innerText = skill.Name;
+    });
+    cleanPlaceholders('.skills-data')
+}
+
+function getTotalSkills(id, element) {
+    $.ajax({
+        url: getSkillsCount_route + id,
+        method: 'GET',
+        contentType: 'application/json',
+        success: function(response) {
+            console.table(response)
+            if(element.querySelector('.total_skills')){
+                element.querySelector('.total_skills').innerText = response; 
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            // Manejar cualquier error que ocurra durante la solicitud AJAX
+            console.error('Error:', textStatus, errorThrown);
+        }
+    });   
+}
+
+function getAllSkills() {
+    $.ajax({
+        url: allSkills_route,
+        method: 'GET',
+        contentType: 'application/json',
+        success: function(response) {
+            console.table(response)
+            skill = response;
+            let ul = document.querySelector('.skill-list');
+            ul.innerHTML = "";
+            response.forEach(skill => {
+                loadPartialView('modules/sub_modules/skills_option_list', document.querySelector('.skill-list'), true, skill, "getAllSkills");
+            });
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            // Manejar cualquier error que ocurra durante la solicitud AJAX
+            console.error('Error:', textStatus, errorThrown);
+        }
+    });   
+}
+
+function setSkillList(li, skill){
+    console.log(li);
+    li.id = ('skill_id_' + skill.Id_Skill);
+    li.querySelector('.skill-name').innerHTML = skill.Name;
+    cleanPlaceholders('#' + li.id);
+}
